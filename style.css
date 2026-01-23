@@ -1,0 +1,705 @@
+/* =============================================
+   POMODORO TIMER - ESTILOS CSS
+   
+   Este arquivo contém todos os estilos visuais
+   do Pomodoro Timer. Está organizado em seções
+   para facilitar o entendimento.
+   
+   IMPORTANTE: Não usamos variáveis CSS (:root).
+   Todos os valores são escritos diretamente.
+   ============================================= */
+
+/* =============================================
+   RESET E ESTILOS GLOBAIS
+   
+   Remove margens e paddings padrão do navegador
+   e define comportamentos base para todos elementos
+   ============================================= */
+
+/* Aplica box-sizing a todos os elementos */
+* {
+   /* box-sizing: border-box faz com que padding e border
+       sejam incluídos no tamanho total do elemento */
+   box-sizing: border-box;
+
+   /* Remove margens padrão */
+   margin: 0;
+
+   /* Remove paddings padrão */
+   padding: 0;
+}
+
+/* =============================================
+   ESTILOS DO BODY (MODO CLARO - PADRÃO)
+   
+   O body é o elemento raiz visível da página.
+   Aqui definimos o fundo, fonte e layout geral.
+   ============================================= */
+
+body {
+   /* Fonte moderna e legível */
+   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+   /* Cor de fundo clara com tom suave de rosa/bege */
+   background: linear-gradient(135deg, #fff5f5 0%, #fef3e2 50%, #e8f5e9 100%);
+
+   /* Altura mínima ocupa toda a tela */
+   min-height: 100vh;
+
+   /* Flexbox para centralizar o conteúdo */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   /* Padding para não colar nas bordas em telas pequenas */
+   padding: 20px;
+
+   /* Cor do texto escura para boa leitura */
+   color: #2d3436;
+
+   /* Transição suave ao trocar de tema */
+   transition:
+      background 0.5s ease,
+      color 0.5s ease;
+}
+
+/* =============================================
+   MODO ESCURO (DARK MODE)
+   
+   Quando a classe "modo-escuro" é adicionada ao body,
+   estes estilos sobrescrevem os padrões acima.
+   
+   A troca é feita via JavaScript, adicionando
+   ou removendo esta classe do body.
+   ============================================= */
+
+body.modo-escuro {
+   /* Fundo escuro com gradiente suave */
+   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+
+   /* Texto claro para contraste */
+   color: #f5f6fa;
+}
+
+/* =============================================
+   CONTAINER PRINCIPAL
+   
+   Caixa central que contém todo o timer.
+   Tem sombra, bordas arredondadas e fundo branco.
+   ============================================= */
+
+#container {
+   /* Fundo branco semi-transparente */
+   background: rgba(255, 255, 255, 0.95);
+
+   /* Bordas bem arredondadas para visual moderno */
+   border-radius: 24px;
+
+   /* Sombra suave que dá profundidade */
+   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+
+   /* Espaçamento interno generoso */
+   padding: 40px;
+
+   /* Largura máxima para não ficar muito largo */
+   max-width: 450px;
+
+   /* Ocupa toda a largura disponível até o máximo */
+   width: 100%;
+
+   /* Centraliza o texto */
+   text-align: center;
+
+   /* Transição suave para mudança de tema */
+   transition:
+      background 0.5s ease,
+      box-shadow 0.5s ease;
+}
+
+/* Container no modo escuro */
+body.modo-escuro #container {
+   /* Fundo escuro semi-transparente */
+   background: rgba(26, 26, 46, 0.95);
+
+   /* Sombra mais escura */
+   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* =============================================
+   CABEÇALHO
+   
+   Contém o título e o botão de trocar tema.
+   Usa flexbox para posicionar os elementos.
+   ============================================= */
+
+#cabecalho {
+   /* Flexbox para alinhar itens lado a lado */
+   display: flex;
+
+   /* Espaço entre título e botão */
+   justify-content: space-between;
+
+   /* Alinha verticalmente ao centro */
+   align-items: center;
+
+   /* Margem inferior para separar do próximo elemento */
+   margin-bottom: 30px;
+
+   /* Permite quebrar em telas pequenas */
+   flex-wrap: wrap;
+
+   /* Espaçamento entre linhas se quebrar */
+   gap: 15px;
+}
+
+/* Título principal */
+h1 {
+   /* Tamanho grande mas não exagerado */
+   font-size: 1.8rem;
+
+   /* Gradiente no texto (efeito visual moderno) */
+   background: linear-gradient(135deg, #e17055, #d63031);
+
+   /* Faz o gradiente aparecer só no texto */
+   -webkit-background-clip: text;
+   background-clip: text;
+
+   /* Torna o texto transparente para ver o gradiente */
+   -webkit-text-fill-color: transparent;
+
+   /* Peso da fonte bold */
+   font-weight: 700;
+}
+
+/* Título no modo escuro */
+body.modo-escuro h1 {
+   /* Gradiente mais vibrante para o modo escuro */
+   background: linear-gradient(135deg, #ff7675, #fd79a8);
+   -webkit-background-clip: text;
+   background-clip: text;
+   -webkit-text-fill-color: transparent;
+}
+
+/* =============================================
+   BOTÃO DE TROCAR TEMA
+   
+   Botão que alterna entre modo claro e escuro.
+   ============================================= */
+
+#botao-tema {
+   /* Cor de fundo suave */
+   background: linear-gradient(135deg, #74b9ff, #0984e3);
+
+   /* Remove borda padrão */
+   border: none;
+
+   /* Texto branco */
+   color: white;
+
+   /* Padding confortável */
+   padding: 10px 20px;
+
+   /* Bordas arredondadas */
+   border-radius: 25px;
+
+   /* Cursor de mãozinha indica que é clicável */
+   cursor: pointer;
+
+   /* Fonte legível */
+   font-size: 0.9rem;
+   font-weight: 600;
+
+   /* Transição suave no hover */
+   transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+}
+
+/* Efeito ao passar o mouse sobre o botão de tema */
+#botao-tema:hover {
+   /* Aumenta levemente */
+   transform: scale(1.05);
+
+   /* Adiciona brilho */
+   box-shadow: 0 5px 20px rgba(116, 185, 255, 0.4);
+}
+
+/* Botão de tema no modo escuro */
+body.modo-escuro #botao-tema {
+   /* Cores diferentes para o modo escuro */
+   background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+
+   /* Texto escuro para contraste */
+   color: #2d3436;
+}
+
+/* =============================================
+   INDICADOR DE MODO (FOCO/DESCANSO)
+   
+   Mostra se o usuário está em modo foco ou descanso.
+   ============================================= */
+
+#indicador-modo {
+   /* Margem para separar dos outros elementos */
+   margin-bottom: 20px;
+}
+
+#texto-modo {
+   /* Fonte grande e legível */
+   font-size: 1.3rem;
+
+   /* Peso semi-bold */
+   font-weight: 600;
+
+   /* Cor vibrante para chamar atenção */
+   color: #e17055;
+
+   /* Transição para mudança de cor */
+   transition: color 0.3s ease;
+}
+
+/* Texto do modo no modo escuro */
+body.modo-escuro #texto-modo {
+   color: #ff7675;
+}
+
+/* =============================================
+   DISPLAY DO TIMER
+   
+   Área principal que mostra o tempo restante.
+   É o elemento mais importante visualmente.
+   ============================================= */
+
+#display-timer {
+   /* Fundo com gradiente suave */
+   background: linear-gradient(135deg, #fff9f9, #fff5f0);
+
+   /* Bordas bem arredondadas */
+   border-radius: 20px;
+
+   /* Padding generoso */
+   padding: 40px;
+
+   /* Margem inferior */
+   margin-bottom: 20px;
+
+   /* Sombra interna sutil */
+   box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.05);
+
+   /* Transição suave */
+   transition: background 0.5s ease;
+}
+
+/* Display no modo escuro */
+body.modo-escuro #display-timer {
+   background: linear-gradient(135deg, #2d3436, #1e272e);
+   box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Números do timer */
+#tempo {
+   /* Fonte muito grande para destaque */
+   font-size: 5rem;
+
+   /* Fonte mono para números alinhados */
+   font-family: "Courier New", Courier, monospace;
+
+   /* Peso bold */
+   font-weight: 700;
+
+   /* Gradiente no texto */
+   background: linear-gradient(135deg, #d63031, #e17055);
+   -webkit-background-clip: text;
+   background-clip: text;
+   -webkit-text-fill-color: transparent;
+
+   /* Espaçamento entre letras */
+   letter-spacing: 5px;
+}
+
+/* Números no modo escuro */
+body.modo-escuro #tempo {
+   background: linear-gradient(135deg, #ff7675, #fab1a0);
+   -webkit-background-clip: text;
+   background-clip: text;
+   -webkit-text-fill-color: transparent;
+}
+
+/* =============================================
+   BARRA DE PROGRESSO
+   
+   Mostra visualmente quanto tempo passou.
+   ============================================= */
+
+#barra-progresso-container {
+   /* Fundo cinza claro */
+   background: #ecf0f1;
+
+   /* Altura da barra */
+   height: 8px;
+
+   /* Bordas arredondadas */
+   border-radius: 10px;
+
+   /* Esconde o que passar da borda */
+   overflow: hidden;
+
+   /* Margem inferior */
+   margin-bottom: 30px;
+
+   /* Transição suave */
+   transition: background 0.5s ease;
+}
+
+/* Container da barra no modo escuro */
+body.modo-escuro #barra-progresso-container {
+   background: #2d3436;
+}
+
+/* Barra de progresso em si (a parte colorida) */
+#barra-progresso {
+   /* Gradiente vibrante */
+   background: linear-gradient(90deg, #e17055, #d63031);
+
+   /* Altura total */
+   height: 100%;
+
+   /* Começa em 0% */
+   width: 0%;
+
+   /* Transição suave da largura */
+   transition: width 0.5s ease;
+
+   /* Bordas arredondadas */
+   border-radius: 10px;
+}
+
+/* =============================================
+   CONTROLES (BOTÕES DE AÇÃO)
+   
+   Botões para iniciar, pausar e resetar o timer.
+   ============================================= */
+
+#controles {
+   /* Flexbox para alinhar botões */
+   display: flex;
+
+   /* Espaçamento entre botões */
+   gap: 15px;
+
+   /* Centraliza os botões */
+   justify-content: center;
+
+   /* Permite quebrar em telas pequenas */
+   flex-wrap: wrap;
+
+   /* Margem inferior */
+   margin-bottom: 30px;
+}
+
+/* Estilo base para todos os botões de controle */
+.botao-controle {
+   /* Padding confortável */
+   padding: 15px 25px;
+
+   /* Fonte legível */
+   font-size: 1rem;
+   font-weight: 600;
+
+   /* Remove borda padrão */
+   border: none;
+
+   /* Bordas arredondadas */
+   border-radius: 15px;
+
+   /* Cursor de mãozinha */
+   cursor: pointer;
+
+   /* Transição suave */
+   transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+}
+
+/* Botão Iniciar - Verde */
+#botao-iniciar {
+   background: linear-gradient(135deg, #00b894, #00a381);
+   color: white;
+}
+
+#botao-iniciar:hover {
+   transform: translateY(-3px);
+   box-shadow: 0 10px 25px rgba(0, 184, 148, 0.4);
+}
+
+/* Botão Pausar - Amarelo/Laranja */
+#botao-pausar {
+   background: linear-gradient(135deg, #fdcb6e, #f39c12);
+   color: #2d3436;
+}
+
+#botao-pausar:hover {
+   transform: translateY(-3px);
+   box-shadow: 0 10px 25px rgba(253, 203, 110, 0.4);
+}
+
+/* Botão Resetar - Vermelho */
+#botao-resetar {
+   background: linear-gradient(135deg, #ff7675, #d63031);
+   color: white;
+}
+
+#botao-resetar:hover {
+   transform: translateY(-3px);
+   box-shadow: 0 10px 25px rgba(214, 48, 49, 0.4);
+}
+
+/* =============================================
+   CONFIGURAÇÕES
+   
+   Seção onde o usuário define os tempos.
+   ============================================= */
+
+#configuracoes {
+   /* Fundo suave */
+   background: rgba(236, 240, 241, 0.5);
+
+   /* Bordas arredondadas */
+   border-radius: 15px;
+
+   /* Padding interno */
+   padding: 25px;
+
+   /* Margem inferior */
+   margin-bottom: 25px;
+
+   /* Transição suave */
+   transition: background 0.5s ease;
+}
+
+/* Configurações no modo escuro */
+body.modo-escuro #configuracoes {
+   background: rgba(45, 52, 54, 0.5);
+}
+
+/* Título da seção de configurações */
+#configuracoes h2 {
+   /* Tamanho do título */
+   font-size: 1.2rem;
+
+   /* Margem inferior */
+   margin-bottom: 20px;
+
+   /* Cor do texto */
+   color: #636e72;
+}
+
+/* Título no modo escuro */
+body.modo-escuro #configuracoes h2 {
+   color: #b2bec3;
+}
+
+/* Grupo de input (label + input) */
+.grupo-input {
+   /* Margem entre grupos */
+   margin-bottom: 15px;
+
+   /* Alinhamento à esquerda */
+   text-align: left;
+}
+
+/* Último grupo sem margem extra */
+.grupo-input:last-child {
+   margin-bottom: 0;
+}
+
+/* Labels dos inputs */
+.grupo-input label {
+   /* Exibe em bloco para ficar acima do input */
+   display: block;
+
+   /* Margem inferior */
+   margin-bottom: 8px;
+
+   /* Tamanho da fonte */
+   font-size: 0.95rem;
+
+   /* Peso semi-bold */
+   font-weight: 500;
+
+   /* Cor do texto */
+   color: #636e72;
+}
+
+/* Labels no modo escuro */
+body.modo-escuro .grupo-input label {
+   color: #b2bec3;
+}
+
+/* Campos de input */
+.grupo-input input {
+   /* Largura total */
+   width: 100%;
+
+   /* Padding interno */
+   padding: 12px 15px;
+
+   /* Tamanho da fonte */
+   font-size: 1rem;
+
+   /* Borda sutil */
+   border: 2px solid #dfe6e9;
+
+   /* Bordas arredondadas */
+   border-radius: 10px;
+
+   /* Fundo branco */
+   background: white;
+
+   /* Cor do texto */
+   color: #2d3436;
+
+   /* Transição suave */
+   transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+}
+
+/* Input em foco */
+.grupo-input input:focus {
+   /* Remove outline padrão */
+   outline: none;
+
+   /* Borda colorida */
+   border-color: #e17055;
+
+   /* Sombra de destaque */
+   box-shadow: 0 0 0 3px rgba(225, 112, 85, 0.2);
+}
+
+/* Inputs no modo escuro */
+body.modo-escuro .grupo-input input {
+   background: #2d3436;
+   border-color: #636e72;
+   color: #f5f6fa;
+}
+
+/* Input em foco no modo escuro */
+body.modo-escuro .grupo-input input:focus {
+   border-color: #ff7675;
+   box-shadow: 0 0 0 3px rgba(255, 118, 117, 0.2);
+}
+
+/* =============================================
+   CONTADOR DE SESSÕES
+   
+   Mostra quantos pomodoros foram completados.
+   ============================================= */
+
+#sessoes {
+   /* Tamanho da fonte */
+   font-size: 1.1rem;
+
+   /* Cor do texto */
+   color: #636e72;
+
+   /* Margem inferior */
+   margin-bottom: 20px;
+}
+
+/* Número de sessões */
+#contador-sessoes {
+   /* Peso bold */
+   font-weight: 700;
+
+   /* Cor vibrante */
+   color: #e17055;
+
+   /* Tamanho maior */
+   font-size: 1.3rem;
+}
+
+/* Contador no modo escuro */
+body.modo-escuro #sessoes {
+   color: #b2bec3;
+}
+
+body.modo-escuro #contador-sessoes {
+   color: #ff7675;
+}
+
+/* =============================================
+   RODAPÉ
+   
+   Informação sobre a técnica Pomodoro.
+   ============================================= */
+
+#rodape {
+   /* Borda superior sutil */
+   border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+   /* Padding superior */
+   padding-top: 20px;
+}
+
+#rodape p {
+   /* Tamanho da fonte menor */
+   font-size: 0.9rem;
+
+   /* Cor suave */
+   color: #636e72;
+
+   /* Estilo itálico */
+   font-style: italic;
+}
+
+/* Rodapé no modo escuro */
+body.modo-escuro #rodape {
+   border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+body.modo-escuro #rodape p {
+   color: #b2bec3;
+}
+
+/* =============================================
+   RESPONSIVIDADE
+   
+   Ajustes para telas menores (celulares).
+   ============================================= */
+
+/* Para telas menores que 480px */
+@media (max-width: 480px) {
+   /* Reduz padding do container */
+   #container {
+      padding: 25px;
+   }
+
+   /* Reduz tamanho do timer */
+   #tempo {
+      font-size: 3.5rem;
+      letter-spacing: 2px;
+   }
+
+   /* Reduz padding do display */
+   #display-timer {
+      padding: 25px;
+   }
+
+   /* Título menor */
+   h1 {
+      font-size: 1.4rem;
+   }
+
+   /* Botões de controle menores */
+   .botao-controle {
+      padding: 12px 18px;
+      font-size: 0.9rem;
+   }
+
+   /* Cabeçalho empilhado */
+   #cabecalho {
+      flex-direction: column;
+      text-align: center;
+   }
+}

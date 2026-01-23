@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt-BR">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta
+         name="description"
+         content="Um Pomodoro Timer simples e eficaz para focar nos estudos, criado com HTML, CSS e JS."
+      />
+      <meta
+         name="keywords"
+         content="Pomodoro, Timer, Estudo, Foco, Produtividade, Cronômetro, GitHub"
+      />
+      <title>Pomodoro Timer Online - Foco nos Estudos</title>
+      <link rel="stylesheet" href="style.css" />
+   </head>
+   <body>
+      <!-- ========================================
+         CONTAINER PRINCIPAL
+         Engloba todo o conteúdo do timer
+         ======================================== -->
+      <div id="container">
+         <!-- ========================================
+             CABEÇALHO
+             Título e botão de trocar tema
+             ======================================== -->
+         <header id="cabecalho">
+            <!-- Título principal com emoji de tomate (Pomodoro = tomate em italiano) -->
+            <h1>🍅 Pomodoro Timer</h1>
+
+            <!-- Botão para alternar entre modo claro e escuro -->
+            <button id="botao-tema" onclick="alternarTema()">🌙 Modo Escuro</button>
+         </header>
+
+         <!-- ========================================
+             INDICADOR DE MODO ATUAL
+             Mostra se está em Foco ou Descanso
+             ======================================== -->
+         <div id="indicador-modo">
+            <span id="texto-modo">🎯 Modo Foco</span>
+         </div>
+
+         <!-- ========================================
+             DISPLAY DO TIMER
+             Mostra o tempo restante no formato MM:SS
+             ======================================== -->
+         <div id="display-timer">
+            <span id="tempo">25:00</span>
+         </div>
+
+         <!-- ========================================
+             BARRA DE PROGRESSO
+             Mostra visualmente quanto tempo passou
+             ======================================== -->
+         <div id="barra-progresso-container">
+            <div id="barra-progresso"></div>
+         </div>
+
+         <!-- ========================================
+             CONTROLES DO TIMER
+             Botões para iniciar, pausar e resetar
+             ======================================== -->
+         <div id="controles">
+            <!-- Botão Iniciar - começa a contagem regressiva -->
+            <button id="botao-iniciar" class="botao-controle" onclick="iniciarTimer()">
+               ▶️ Iniciar
+            </button>
+
+            <!-- Botão Pausar - pausa a contagem -->
+            <button id="botao-pausar" class="botao-controle" onclick="pausarTimer()">
+               ⏸️ Pausar
+            </button>
+
+            <!-- Botão Resetar - volta ao tempo inicial -->
+            <button id="botao-resetar" class="botao-controle" onclick="resetarTimer()">
+               🔄 Resetar
+            </button>
+         </div>
+
+         <!-- ========================================
+             CONFIGURAÇÕES DE TEMPO
+             Inputs para definir tempo de foco e descanso
+             ======================================== -->
+         <div id="configuracoes">
+            <h2>⚙️ Configurações</h2>
+
+            <!-- Grupo de input para tempo de foco -->
+            <div class="grupo-input">
+               <label for="input-foco">🎯 Tempo de Foco (minutos):</label>
+               <input
+                  type="number"
+                  id="input-foco"
+                  min="1"
+                  max="60"
+                  value="25"
+                  onchange="atualizarTempoFoco()"
+               />
+            </div>
+
+            <!-- Grupo de input para tempo de descanso -->
+            <div class="grupo-input">
+               <label for="input-descanso">☕ Tempo de Descanso (minutos):</label>
+               <input
+                  type="number"
+                  id="input-descanso"
+                  min="1"
+                  max="30"
+                  value="5"
+                  onchange="atualizarTempoDescanso()"
+               />
+            </div>
+         </div>
+
+         <!-- ========================================
+             CONTADOR DE SESSÕES
+             Mostra quantos pomodoros foram completados
+             ======================================== -->
+         <div id="sessoes">
+            <span>🍅 Pomodoros completados: </span>
+            <span id="contador-sessoes">0</span>
+         </div>
+
+         <!-- ========================================
+             RODAPÉ
+             Informações sobre a técnica Pomodoro
+             ======================================== -->
+         <footer id="rodape">
+            <p>
+               💡 A Técnica Pomodoro: Trabalhe focado por 25 minutos, depois descanse 5 minutos.
+               Repita!
+            </p>
+         </footer>
+      </div>
+
+      <!-- ========================================
+         ELEMENTOS DE ÁUDIO
+         Sons que tocam quando o tempo acaba
+         ======================================== -->
+
+      <!-- Som para quando o tempo de foco acabar -->
+      <audio id="som-foco" preload="auto">
+         <!-- Usando um som de notificação gerado por oscilador no JS -->
+      </audio>
+
+      <!-- Som para quando o tempo de descanso acabar -->
+      <audio id="som-descanso" preload="auto">
+         <!-- Usando um som de notificação gerado por oscilador no JS -->
+      </audio>
+
+      <!-- Conecta o arquivo JavaScript externo -->
+      <script src="script.js"></script>
+   </body>
+</html>
