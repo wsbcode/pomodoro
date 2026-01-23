@@ -1,3 +1,5 @@
+![Preview do Projeto](/img/image.png)
+
 🍅 Meu Pomodoro Timer
 Este é um projeto pessoal de um cronômetro baseado na Técnica Pomodoro, desenvolvido para me ajudar na organização do tempo e foco nos meus estudos.
 
