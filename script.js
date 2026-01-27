@@ -416,7 +416,7 @@ function tocarSom(frequencia, duracao) {
    var oscilador = contextoAudio.createOscillator();
    var ganho = contextoAudio.createGain();
 
-   oscilador.type = "square";
+   oscilador.type = "sine";
    oscilador.frequency.value = frequencia;
    ganho.gain.value = 0.5;
 
