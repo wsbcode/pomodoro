@@ -16,11 +16,11 @@
    Usamos nomes em português para facilitar.
    ============================================= */
 
-// Tempo de foco em segundos (25 minutos = 25 * 60 = 1500 segundos)
-var tempoFocoEmSegundos = 25 * 60;
+// Tempo de foco em segundos (50 minutos = 50 * 60 = 3000 segundos)
+var tempoFocoEmSegundos = 50 * 60;
 
-// Tempo de descanso em segundos (5 minutos = 5 * 60 = 300 segundos)
-var tempoDescansoEmSegundos = 5 * 60;
+// Tempo de descanso em segundos (10 minutos = 10 * 60 = 600 segundos)
+var tempoDescansoEmSegundos = 10 * 60;
 
 // Tempo atual restante (começa igual ao tempo de foco)
 var tempoRestante = tempoFocoEmSegundos;
